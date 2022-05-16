@@ -232,10 +232,11 @@ def mean_average_precision(
     return sum(average_precisions) / len(average_precisions)
 
 
-def plot_image(image, boxes):
+def plot_image(image, boxes, class_labels = None):
     """Plots predicted bounding boxes on the image"""
     cmap = plt.get_cmap("tab20b")
-    class_labels = config.COCO_LABELS if config.DATASET=='COCO' else config.PASCAL_CLASSES
+    if class_labels == None:
+        class_labels = config.COCO_LABELS if config.DATASET=='COCO' else config.PASCAL_CLASSES
     colors = [cmap(i) for i in np.linspace(0, 1, len(class_labels))]
     im = np.array(image)
     height, width, _ = im.shape

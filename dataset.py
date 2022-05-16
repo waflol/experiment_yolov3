@@ -21,7 +21,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 def create_csv(path):
     img_lst = glob.glob(path+"*.jpg")
-    label_lst = [x.replace('jpg','txt') for x in img_lst]
+    label_lst = [x.replace('.jpg','.txt') for x in img_lst]
     return pd.DataFrame({"img":img_lst,"label":label_lst})
 
 class YOLODataset(Dataset):
